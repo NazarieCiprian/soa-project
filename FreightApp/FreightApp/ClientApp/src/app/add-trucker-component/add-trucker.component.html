@@ -1,0 +1,23 @@
+<div class="form-container">
+    <div>
+        <mat-form-field class="input-field">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Username" #username>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="input-field">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" #password type="password">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="input-field">
+            <mat-label>TruckingCompany</mat-label>
+            <input matInput placeholder="TruckingCompany" #truckingcompany >
+        </mat-form-field>
+    
+    </div>
+    
+    <button mat-button (click)="addTrucker()">Add Trucker</button>
+</div>

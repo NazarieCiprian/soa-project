@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "FreightMicroservice";
+
+service Freight{
+	rpc GetFreights(GetFreightsRequest) returns (GetFreightsResponse);
+	rpc AddFreight(AddFreightRequest) returns (AddFreightResponse);
+	rpc UpdateFreightStatus(UpdateFreightStatusRequest) returns (UpdateFreightStatusResponse);
+	rpc GetAvailableFreights(GetAvailableFreightsRequest) returns (GetAvailableFreightsResponse);
+}
+
+message GetFreightsRequest {
+
+}
+
+message FreightMessage{
+	int32 id = 1;
+	string location = 2;
+	string destination = 3;
+	string cargo = 4;
+	int32 status = 5;
+	int32 payment = 6;
+}
+
+message GetFreightsResponse {
+	repeated FreightMessage freights = 1;
+}
+
+message AddFreightRequest {
+	FreightMessage freight = 1;
+}
+
+message AddFreightResponse {
+	FreightMessage freight = 1;
+}
+
+message UpdateFreightStatusRequest {
+	int32 FreightId = 1;
+	int32 Status = 2;
+}
+
+message UpdateFreightStatusResponse {
+	FreightMessage freight = 1;
+}
+
+message GetAvailableFreightsRequest {
+
+}
+
+message GetAvailableFreightsResponse {
+	repeated FreightMessage freights = 1;
+}
+

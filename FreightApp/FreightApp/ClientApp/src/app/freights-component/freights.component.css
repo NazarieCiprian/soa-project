@@ -1,0 +1,10 @@
+.freights-container {
+    height: 600px;
+    width: 600px;
+    overflow: auto;
+    margin: auto;
+}
+
+.example-card {
+    margin: 5px;
+}

@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+option csharp_namespace = "TruckerMicroservice";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+ rpc GetTruckers(GetTruckersRequest) returns (GetTruckersResponse);
+	rpc GetTruckersByUsernameAndPassword(GetTruckerByUsernameAndPasswordRequest) returns (GetTruckerByUsernameAndPasswordResponse);
+	rpc AddTrucker(AddTruckerRequest) returns (AddTruckerResponse);
+	rpc GetFreights(GetFreightsRegisterRequest) returns (GetFreightRegisterResponse);
+	rpc GetFreightsRegisterByTruckerId(GetFreightsRegisterByTruckerIdRequest) returns (GetFreightsRegisterByTruckerIdResponse);
+	rpc TakeFreight(TakeFreightCommandRequest) returns (TakeFreightCommandResponse);
+	rpc CompleteFreight(CompleteFreightRequest) returns (CompleteFreightResponse);
+	
+}
+
+message GetTruckersRequest {
+
+}
+
+message TruckerMessage{
+	int32 id = 1;
+	string username = 2;
+	string password = 3;
+	string TruckingCompany = 4;
+}
+
+message FreightRegisterMessage{
+	int32 id = 1;
+	int32 freightId = 2;
+	int32 truckerId = 3;
+	int32 payment = 4;
+	int32 status =5;
+}
+
+message GetTruckersResponse {
+	repeated TruckerMessage truckers = 1;
+}
+
+message AddTruckerRequest {
+	TruckerMessage trucker = 1;
+}
+
+message AddTruckerResponse {
+	TruckerMessage trucker = 1;
+}
+
+message CompleteFreightRequest {
+	int32 truckerId = 1;
+	int32 freightId = 2;
+	int32 status = 3;
+}
+
+message CompleteFreightResponse {
+	bool success = 1;
+}
+
+message TakeFreightCommandRequest {
+	int32 truckerId = 1;
+	int32 freightId = 2;
+	int32 payment = 3;
+}
+
+message TakeFreightCommandResponse {
+	bool success = 1;
+}
+
+message GetTruckerByUsernameAndPasswordRequest {
+	string username = 1;
+	string password = 2;
+}
+
+message GetTruckerByUsernameAndPasswordResponse {
+	TruckerMessage trucker = 1;
+}
+
+
+message GetFreightsRegisterByTruckerIdRequest {
+	int32 truckerId = 1;
+}
+
+message GetFreightsRegisterByTruckerIdResponse {
+	repeated FreightRegisterMessage freightRegisters = 1;
+}
+
+message GetFreightsRegisterRequest {
+}
+
+message GetFreightRegisterResponse{
+	repeated FreightRegisterMessage freightRegisters = 1;
+}
